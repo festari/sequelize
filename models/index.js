@@ -19,6 +19,10 @@ const Article = require("./Article");
 User.initModel(sequelize);
 Article.initModel(sequelize);
 
+// Establecer la relación entre User y Article
+User.hasMany(Article, { foreignKey: "userId" });
+Article.belongsTo(User, { foreignKey: "userId" });
+
 /*
  * Luego de definir los modelos, se pueden establecer relaciones entre los
  * mismos (usando métodos como belongsTo, hasMany y belongsToMany)...
